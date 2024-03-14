@@ -1,0 +1,23 @@
+#create and connect to an ec2 instance
+
+#once connected to the instance
+
+sudo yum update -y
+sudo amazon-linux-estras install docker
+sudo service docker start
+sudo usermod -a -G docker ec2-user
+pwd
+mkdir downloads
+cd downloads/
+
+#return to your repo and copy pem file there, after that run the following commands in an ubuntu/linux terminal
+chmod 600 vs-kp-1.pem
+scp -i vs-kp-1.pem Dockerfile app_api_glob.py requirements.txt ec2-user@18.234.81.31:/home/ec2-user/downloads
+
+#return to your ec2 instance
+sudo docker build ec2-flask-api-glob:v1.0 -f Dockerfile .
+sudo docker images
+sudo docker run -d -p 80:5000 ec2-flask-api-glob:v1.0
+
+#browser, to get a response
+18.234.81.31:80
