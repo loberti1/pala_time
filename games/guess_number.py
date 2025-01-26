@@ -7,7 +7,6 @@ from random import *
 basket = [x if type(x) == type(int()) else None for x in range(0,101)]
 shuffle(basket)
 sorted_number = choice(basket)
-print(sorted_number)
 name = input('Please, insert your name: ')
 
 if type(name) == type(str()):
@@ -32,7 +31,9 @@ if type(name) == type(str()):
                 start += 1
                 print(f'You nailed it! {chosen_number} was the secret number indeed. It has taken {start} tries to guess it')
                 break
-        
+        if chosen_number == sorted_number:
+            print('Final Result: YOU HAVE WON')
+        else: print('Final Result: YOU HAVE LOST')
         print('Game is set, hope you enjoyed it!')
                 
     else:
