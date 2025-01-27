@@ -27,9 +27,9 @@ def verify(x):
 def insert_letter():
     """function to choose and get a letter"""
     letter = input('Please, insert a letter: ')
-    if letter in list(string.ascii_lowercase):
-        return letter
-    else: return 'It is not a letter'
+    if letter.lower() in list(string.ascii_lowercase):
+        return letter.lower()
+    else: print('It is not a letter') 
 
 def index_letter(word,x):
     """function to obtain indexes for a certain word if the chosen letter is present"""
@@ -56,8 +56,11 @@ try:
             print(f'You have {life} lives left')
             full_word = input('try: ')
 
-            if  full_word == palabra or empty_word == palabra:
+            if  (full_word.lower() == palabra and full_word.lower() != 'no') or empty_word == palabra:
                 win()
+                break
+            elif full_word.lower() != 'no' and full_word != palabra:
+                loose()
                 break
             else: continue
 
