@@ -6,6 +6,21 @@ life = 6
 palabra = choice(['escuadra','zanata','cheese','outstanding','home','street'])
 empty_word = '-' * len(palabra)
 
+def game_start():
+    print('*******************')
+
+    print('GAME IS STARTING')
+
+    print('*******************')
+
+def win():
+    print(f'Congratulations, you have won! Indeed, secret word was "{palabra}"')
+    print('GAME SET')
+
+def loose():
+    print('Such a pitty, you have lost. But do not hesitate to try again')
+    print('GAME SET')
+
 def verify(x):
     return '-' in x
 
@@ -29,6 +44,8 @@ def replace_in_blanks(empty_word,x,positions):
     empty_word = ''.join(empty_word)
     return empty_word
 
+
+game_start()
 try: 
     while life > 0 and verify(empty_word) == True:
             letra = insert_letter()
@@ -40,17 +57,16 @@ try:
             full_word = input('try: ')
 
             if  full_word == palabra or empty_word == palabra:
-                print(f'Congratulations, you have won! Indeed, secret word was {palabra}')
-                print('GAME SET')
+                win()
                 break
             else: continue
 
     if verify(empty_word) == True and life == 0:
-        print('Such a pitty, you have lost. But do not hesitate to try again')
-        print('GAME SET')
+        loose()
     else: 
         pass
 except:
     raise KeyError
-
+finally:
+    print('THANKS FOR PLAYING!')
     
