@@ -2,6 +2,8 @@
 
 from random import *
 import string
+import os
+
 life = 6
 palabra = choice(['escuadra','zanata','cheese','outstanding','home','street'])
 empty_word = '-' * len(palabra)
@@ -55,6 +57,7 @@ try:
             life -= 1
             print(f'You have {life} lives left')
             full_word = input('try: ')
+            os.system('cls')
 
             if  (full_word.lower() == palabra and full_word.lower() != 'no') or empty_word == palabra:
                 win()
