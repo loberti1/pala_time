@@ -58,19 +58,19 @@ def process(customer):
     election_num = 0
 
     print(f'Good day {customer.name} {customer.surname}')
-    while election_num != 3:
+    while election_num != 'E':
         try:
-            print('#1# Deposit\n#2# Withdraw\n#3# End')
-            election_num = int(input('Select: '))
+            print('#D# Deposit\n#W# Withdraw\n#E# End')
+            election_num = str(input('Select (d,w,e): ')).upper()
             os.system('cls')
 
-            if election_num not in (1,2,3):
+            if election_num not in ('D','W','E'):
                 print('You have not selected a valid process, please try again')
-            elif election_num == 1:
+            elif election_num == 'D':
                 amount = float(input('Insert an amount to add to your account: '))
                 customer.deposit(amount)
                 print(f'ACCOUNT = {customer.account_balance}')
-            elif election_num == 2:
+            elif election_num == 'W':
                 amount = float(input('Insert an amount to get from your account: '))
                 if amount > customer.account_balance:
                     print('You do not have enough capital available to substract that amount')
@@ -86,3 +86,6 @@ def process(customer):
 ###start process from creation
 client_os = create_client()
 process(client_os)
+
+client_pt = create_client()
+process(client_pt)
