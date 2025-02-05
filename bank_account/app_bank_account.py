@@ -10,13 +10,14 @@ import os
 from random import *
 
 class Person:
+    """class that defines a person with its own name and surname"""
     def __init__(self, name, surname):
         self.name = name.capitalize()
         self.surname = surname.capitalize()
 
 class Client(Person):
     """class that inherits all methods/attributes from class Person, it basically defines the client's information including
-    name, surname, account number and balance and operations related to its account"""
+    name, surname, account number and balance and operations related to its account (deposit, withdraw, deletion)"""
     def __init__(self, name, surname, account_number, account_balance):
         super().__init__(name, surname)
         self.account_number = account_number
@@ -35,6 +36,7 @@ class Client(Person):
         self.account_balance -= amount
 
 class CurrentNumberAvailable:
+    """class that shares current number of account available for a fresh user"""
     begin_account = 100000
 
     @classmethod
@@ -42,6 +44,8 @@ class CurrentNumberAvailable:
         cls.begin_account += 1
 
 def create_client():
+    """function that creates a client in our system"""
+
     name = str(input('Enter your name: ')).lower().capitalize()
     surname = str(input('Enter your surname: ')).lower().capitalize()
     CurrentNumberAvailable.new_customer()
@@ -55,6 +59,7 @@ def create_client():
     return Client(name,surname,account_number,account_balance)
 
 def process(customer):
+    """Function that operates the bank account process including deposit and withdraw"""
     election_num = 0
 
     print(f'Good day {customer.name} {customer.surname}')

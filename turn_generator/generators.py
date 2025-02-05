@@ -4,6 +4,7 @@ from random import *
 from datetime import datetime,date
 
 class Customer:
+    """class that defines a customer indicating time of the day in wich he/she enters the drugstore and generates a turn"""
     def __init__(self,day,month,year,weekday,hour):
         self.day = day
         self.month = month
@@ -28,6 +29,7 @@ class Customer:
             else: pass
 
 def program_start():
+    """process that generates a number depending on the selection"""
     to_day = Customer(datetime.now().day,datetime.now().month,datetime.now().year,datetime.now().weekday(),datetime.now().hour)
     pharmacy = to_day.turn_generator('pharmacy')
     perfumerie = to_day.turn_generator('perfumerie')
