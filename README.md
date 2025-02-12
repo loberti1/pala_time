@@ -12,3 +12,6 @@ find code to create/replicate popular games such as hangman or space invaders
 
 # turn_generator
 find code to create/replicate turn generator for a drugstore
+
+# web scrapper books
+app created to obtain data from bookstore, gettion books with rating >= 4 
