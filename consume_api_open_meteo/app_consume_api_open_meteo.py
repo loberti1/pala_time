@@ -25,7 +25,7 @@ data = response.json()
 
 #generate dataframe and conversions
 df = pd.DataFrame({
-    "timestamp": data["hourly"]["time"],
+    "id_timestamp": data["hourly"]["time"],
     "temperature_2m": data["hourly"]["temperature_2m"],
     "relative_humidity_2m": data["hourly"]["relative_humidity_2m"],
     "precipitation": data["hourly"]["precipitation"],
