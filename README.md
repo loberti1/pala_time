@@ -4,6 +4,10 @@ Showcase all my projects/mini-projects
 # api_sql_server
 api created with flask to ingest (method = 'POST') sql server tables with .csv files from local working directory and also (method = 'GET') get two .csv files which are the result of two sql queries
 
+# consume_api_open_meteo
+consume data from API Open Meteo from buenos aires, transform json response to legible dataframe and create a pipeline to incrementally load
+the data and merge updates/new inserts
+
 # bank_account
 find code to create/replicate bank accounts operations
 

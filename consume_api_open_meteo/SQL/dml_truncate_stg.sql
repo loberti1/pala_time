@@ -1,0 +1,1 @@
+TRUNCATE TABLE dbo.stg_openmeteo;
