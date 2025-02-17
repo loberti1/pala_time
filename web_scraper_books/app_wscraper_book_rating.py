@@ -1,4 +1,5 @@
-"""scrap books.toscrape.com to get books with rating > 4"""
+"""scrap books.toscrape.com to get books with rating > 4
+this code is still working by 02-2025"""
 import bs4, requests as re
 url_init = 'https://books.toscrape.com/catalogue/page-{}.html'
 titles_big_rating = []
