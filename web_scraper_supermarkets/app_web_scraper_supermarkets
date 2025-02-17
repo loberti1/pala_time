@@ -6,9 +6,6 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 
-print('This solutions serves as a finder of the cheapest supermarket nearby home, depending on the month, the cheapest supermarket may change')
-print('Searching...')
-
 #depending on the site changes, you may change URL or classes depending on the error
 urls = {'carrefour':['https://www.carrefour.com.ar/leche-entera-larga-vida-las-tres-ninas-1-l/p',
                      'https://www.carrefour.com.ar/bife-de-chorizo-novillito-x-kg-662854/p',
@@ -45,36 +42,44 @@ classes = {'carrefour':'valtech-carrefourar-product-price-0-x-sellingPriceValue'
             ,'dia':'diaio-store-5-x-sellingPriceValue'
             ,'coto':'price'}
 
-def mean_supermarket(supermarket: str) ->float:
-    prices = []
+class Supersearch:
+    def __init__(self,market: str):
+        self.market = market
 
-    #chrome setup
-    chrome_options = Options().add_argument('--headless')
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(chrome_options,service)
+    def mean_supermarket(self) ->float:
+        prices = []
 
-    #get prices for each product
-    for url in urls[supermarket]:
-        driver.get(url)
-        driver.implicitly_wait(2)
-        price = driver.find_element(By.CLASS_NAME, classes[supermarket])
-        prices.append(float(price.text.replace(' ','').replace('$','').replace('.','').replace(',','.').replace('\n-54%','')
-                            .replace('\nc/u','')))
+        #chrome setup
+        chrome_options = Options().add_argument('--headless')
+        service = Service(ChromeDriverManager().install())
+        driver = webdriver.Chrome(chrome_options,service)
 
-    #close chrome and return mean price
-    driver.quit()
-    return sum(prices)/len(prices)
+        #get prices for each product
+        for url in urls[self.market]:
+            driver.get(url)
+            driver.implicitly_wait(2)
+            price = driver.find_element(By.CLASS_NAME, classes[self.market])
+            prices.append(float(price.text.replace(' ','').replace('$','').replace('.','').replace(',','.').replace('\n-54%','')
+                                .replace('\nc/u','')))
 
-mean_carrefour = round(mean_supermarket('carrefour'),2)
-mean_dia = round(mean_supermarket('dia'),2)
-mean_coto = round(mean_supermarket('coto'),2)
+        #close chrome and return mean price
+        driver.quit()
+        return round(sum(prices)/len(prices),2)
+
+print('This solutions serves as a finder of the cheapest supermarket nearby home, depending on the month, the cheapest supermarket may change')
+print('Searching...')
+
+#getting all average values
+mean_carrefour = Supersearch('carrefour').mean_supermarket()
+mean_dia = Supersearch('dia').mean_supermarket()
+mean_coto = Supersearch('coto').mean_supermarket()
 index = {'Carrefour':mean_carrefour,'Dia':mean_dia,'Coto':mean_coto}
 
 print(f'\nMean price for Carrefour is: ${mean_carrefour}')
 print(f'Mean price for Dia is: ${mean_dia}')
 print(f'Mean price for Coto is: ${mean_coto}')
 
+#getting the best option to buy this week
 cheapest_average = min(mean_carrefour,mean_dia,mean_coto)
 cheapest_supermarket = ''.join([key for key, val in index.items() if val == cheapest_average])
-
 print(f'\nThis week you should buy in {cheapest_supermarket}, its average price is ${cheapest_average}!!!')
