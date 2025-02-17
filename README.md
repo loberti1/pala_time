@@ -1,4 +1,4 @@
-# pala_time
+### pala_time
 Showcase all my projects/mini-projects
 
 # api_sql_server
@@ -14,4 +14,7 @@ find code to create/replicate popular games such as hangman or space invaders
 find code to create/replicate turn generator for a drugstore
 
 # web_scrapper_books
-app created to obtain data from bookstore, get books with rating >= 4 
+app created to obtain data from bookstore, get books with rating >= 4
+
+# web_scraper_supermarkets
+app created to obtain mean price for a list of general goods and select the cheapest supermarket
