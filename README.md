@@ -14,7 +14,7 @@ find code to create/replicate popular games such as hangman or space invaders
 find code to create/replicate turn generator for a drugstore
 
 # web_scrapper_books
-app created to obtain data from bookstore, get books with rating >= 4
+app created to obtain data from bookstore, get book titles with rating >= 4 stars
 
 # web_scraper_supermarkets
-app created to obtain mean price for a list of general goods and select the cheapest supermarket
+app created to obtain mean price for a list of general goods and select the cheapest supermarket within a 1km range
